@@ -3,10 +3,13 @@ import React, { useCallback, useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import { find, isEmpty } from 'lodash/fp'
 import { FieldData } from 'rc-field-form/lib/interface'
+
 import eyeLogo from '../../assets/eye.svg'
 import eyeClose from '../../assets/eye-close-line.svg'
 import mail from '../../assets/mail.svg'
 import lock from '../../assets/lock.svg'
+
+import { LoginRequest, useLoginMutation } from '../../reducers/api'
 
 const validateMessages = {
   required: '${name} is required!',
@@ -15,12 +18,14 @@ const validateMessages = {
   }
 }
 
-const onFinish = (values: any) => {
-  console.log(values)
-}
-
 const Login = () => {
   const [isEnableSubmitButton, setEnableSubmitButton] = useState(false)
+  const [login, { isLoading }] = useLoginMutation()
+
+  const onFinish = (values: LoginRequest) => {
+    login(values)
+  }
+
   const checkEnableSubmitbutton = useCallback((fileds: FieldData[]) => {
     const unTouch = find({ touched: false }, fileds)
     if (unTouch) {
@@ -41,7 +46,6 @@ const Login = () => {
       validateMessages={validateMessages}
       clearOnDestroy
       onFieldsChange={(_, allFields) => {
-        console.log('allFields', allFields)
         checkEnableSubmitbutton(allFields)
       }}
     >
@@ -56,7 +60,7 @@ const Login = () => {
         />
       </Form.Item>
       <Form.Item>
-        <Button block type='primary' htmlType='submit' disabled={!isEnableSubmitButton}>
+        <Button block type='primary' htmlType='submit' disabled={!isEnableSubmitButton} loading={isLoading}>
           Submit
         </Button>
       </Form.Item>
