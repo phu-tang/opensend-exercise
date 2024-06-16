@@ -9,10 +9,6 @@ type useInfoState = {
   access: unknown | null
 }
 
-export const resetAuthAction = () => ({
-  type: resetAuthActionType
-})
-
 const initalState = {
   user: null,
   view: null,

@@ -12,7 +12,10 @@ const Layout = () => {
   const isAdmin = useSelector(isAdminSelector)
   const isClient = useSelector(isClientSelector)
   const navigate = useNavigate()
+  const windowQuery = window.matchMedia('(prefers-color-scheme:light)')
+
   useEffect(() => {
+    console.log('windowQuery', windowQuery)
     if (isAdmin) {
       navigate('/admin', { replace: true })
     }

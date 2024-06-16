@@ -1,7 +1,7 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { isAuthenticatedSelector } from '../selectors/authenticates'
 
 type PrivateRoute = {
@@ -10,11 +10,17 @@ type PrivateRoute = {
 
 const PrivateRoute = ({ children }: PrivateRoute) => {
   const isAuthen = useSelector(isAuthenticatedSelector)
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    if (!isAuthen) {
+      navigate('/', { replace: true })
+    }
+  }, [isAuthen, navigate])
   if (isAuthen) {
     return children
   }
-  return <Navigate to={'/'} replace />
+  return null
 }
 
 export default PrivateRoute

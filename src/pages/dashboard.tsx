@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { storeIdSelector } from '../selectors/userInfoSelector'
 import { useLazyGetStoreInfoQuery } from '../reducers/api'
 import { Spin } from 'antd'
+import LogoutButton from '../components/logoutButton'
 
 const Dashboard = () => {
   const storeId = useSelector(storeIdSelector)
@@ -17,7 +18,12 @@ const Dashboard = () => {
   if (isLoading) {
     return <Spin />
   }
-  return <div>Dashboard</div>
+  return (
+    <div>
+      <div>Dashboard</div>
+      <LogoutButton />
+    </div>
+  )
 }
 
 export default Dashboard

@@ -3,8 +3,10 @@ import { RootState } from '../reducers'
 
 export const isAuthenticatedSelector = (state: RootState) => {
   const token = path('auth.accessToken', state)
-  const client = path('auth.client', state)
-  return token && client
+  //I dont know why admin doesn't have clientID
+  // const client = path('auth.client', state)
+  // return token && client
+  return token
 }
 
 export const getAccessTokenSelector = (state: RootState) => {
