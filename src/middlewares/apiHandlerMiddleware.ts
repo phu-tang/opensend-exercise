@@ -10,15 +10,14 @@ export const handleUnAuthorizeApiMiddleware: Middleware<unknown, RootState> =
   (next) =>
   (action) => {
     if (isRejectedWithValue(action)) {
-      console.log('action', action)
-    }
-    const status = path('payload.status', action)
-    const errorMessage = path('payload.data.message', action)
-    if (status === 401) {
-      dispatch(resetAuthAction())
-    }
-    if (errorMessage) {
-      message.error(errorMessage)
+      const status = path('payload.status', action)
+      const errorMessage = path('payload.data.message', action)
+      if (status === 401) {
+        dispatch(resetAuthAction())
+      }
+      if (errorMessage) {
+        message.error(errorMessage)
+      }
     }
     return next(action)
   }
