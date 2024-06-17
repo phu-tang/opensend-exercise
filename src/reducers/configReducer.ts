@@ -2,7 +2,7 @@ import { UnknownAction } from '@reduxjs/toolkit'
 import { pathOr } from 'lodash/fp'
 
 type configState = {
-  isDarkMode: unknown
+  isDarkMode: boolean
 }
 
 const initialState = {
@@ -19,8 +19,7 @@ export const updateModeAction = (isDarkMode: boolean) => ({
 const reducer = (state = initialState, action: UnknownAction) => {
   if (action.type === updateMode) {
     return {
-      ...state,
-      isDarkMode: pathOr(false, 'payload', action)
+      isDarkMode: pathOr(false, 'payload', action) as boolean
     }
   }
   return state
