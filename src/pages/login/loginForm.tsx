@@ -50,10 +50,15 @@ const Login = () => {
       }}
     >
       <Form.Item name={'email'} rules={[{ required: true, message: 'email incorrect', type: 'email' }]}>
-        <Input prefix={<img src={mail} width={16} height={16} />} placeholder='Email address' />
+        <Input
+          style={{ fontFamily: 'Inter' }}
+          prefix={<img src={mail} width={16} height={16} />}
+          placeholder='Email address'
+        />
       </Form.Item>
       <Form.Item name={'password'} rules={[{ required: true, message: 'Please input your password!' }]}>
         <Input.Password
+          style={{ fontFamily: 'Inter' }}
           placeholder='Password'
           iconRender={(visible) => <img src={visible ? eyeLogo : eyeClose} width={16} height={16} />}
           prefix={<img src={lock} width={16} height={16} />}

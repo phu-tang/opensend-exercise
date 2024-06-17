@@ -25,10 +25,12 @@ const Layout = () => {
   return (
     <Modal open centered footer={null} style={{ textAlign: 'center' }}>
       <Title>Welcome back!</Title>
-      <Text>
-        Don't worry! Fill in the email address associated with your account and we'll send you a link to reset your
-        account
-      </Text>
+      <div style={{ marginBottom: 19 }}>
+        <Text style={{ marginBottom: 8, marginTop: 8 }}>
+          Don't worry! Fill in the email address associated with your account and we'll send you a link to reset your
+          account
+        </Text>
+      </div>
       <LoginForm />
     </Modal>
   )
