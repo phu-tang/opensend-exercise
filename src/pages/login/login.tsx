@@ -5,6 +5,7 @@ import LoginForm from './loginForm'
 import { useSelector } from 'react-redux'
 import { isAdminSelector, isClientSelector } from '../../selectors/userInfoSelector'
 import { useNavigate } from 'react-router-dom'
+import SwitchModeButton from '../../components/switchModeButton'
 
 const { Title, Text } = Typography
 
@@ -32,6 +33,7 @@ const Layout = () => {
         </Text>
       </div>
       <LoginForm />
+      <SwitchModeButton />
     </Modal>
   )
 }

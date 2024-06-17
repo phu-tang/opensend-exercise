@@ -6,6 +6,7 @@ import { useLazyGetStoreInfoQuery } from '../reducers/api'
 import { Spin } from 'antd'
 import LogoutButton from '../components/logoutButton'
 import { useNavigate } from 'react-router-dom'
+import SwitchModeButton from '../components/switchModeButton'
 
 const Onboard = () => {
   const storeId = useSelector(storeIdSelector)
@@ -29,6 +30,7 @@ const Onboard = () => {
   return (
     <div>
       <div>Onboard</div>
+      <SwitchModeButton />
       <LogoutButton />
     </div>
   )

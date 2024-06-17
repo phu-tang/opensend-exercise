@@ -9,7 +9,7 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 const persistConfig = {
   key: 'openSend',
   storage,
-  whitelist: ['auth', 'userInfo']
+  whitelist: ['auth', 'userInfo', 'config']
 }
 const persistedReducer = persistReducer<RootState>(persistConfig, rootReducer)
 
