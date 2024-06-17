@@ -15,12 +15,12 @@ export const baseapi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getAccessTokenSelector(getState() as RootState)
       if (token != null) {
-        headers.set('authorization', token)
+        headers.set('Access-Token', token)
       }
       const client = getClientSelector(getState() as RootState)
 
       if (client != null) {
-        headers.set('client', client)
+        headers.set('Client-Token', client)
       }
       return headers
     }
